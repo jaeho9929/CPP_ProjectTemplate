@@ -1,0 +1,7 @@
+{
+    "catch2TestExplorer.executables": {
+        "name": "${filename}",
+        "description": "${relDirpath}/",
+        "pattern": "{build,Build,BUILD,out,Out,OUT}/*{bin,BIN,Bin,test,Test,TEST}*/*{test,Test,TEST}*",
+    }
+}
