@@ -1,12 +1,12 @@
 <!-- TODO badges !!!!!
-[![Build Status]]()
 [![Coverage Status]]()
-[![License]]()
 -->
+[![Build Status](https://travis-ci.org/jaeho9929/CPP_ProjectTemplate.svg?branch=master)](https://travis-ci.org/jaeho9929/CPP_ProjectTemplate/builds)
+[![MIT License][license-badge]](LICENSE)
 
 # CMake ProjectTemplate
 
-C/C++ unit test using [CMake](https://cmake.org/) and [Google Test](https://github.com/google/googletest) with [Travis-CI](https://travis-ci.org/), [AppVeyor](https://www.appveyor.com/), [CodeCov](https://codecov.io/), [Coveralls](https://coveralls.io/).
+C/C++ unit test using [CMake][1] and [Google Test][2] with [Travis-CI][3], [AppVeyor][4], [CodeCov][5], [Coveralls][6].
 
 The purpose of this project is tutorial to getting familiar with open source development process.
 
@@ -17,3 +17,12 @@ gujans/travis-gtest-cmake-example https://github.com/gujans/travis-gtest-cmake-e
 TusharChugh/travis-gcov-gtest-example https://github.com/TusharChugh/travis-gcov-gtest-example \
 And... for Korean
 https://www.slideshare.net/utilforever/ss-114169070
+
+<!-- my badges -->
+[1]: https://cmake.org/
+[2]: https://github.com/google/googletest
+[3]: https://travis-ci.org/
+[4]: https://www.appveyor.com/
+[5]: https://codecov.io/
+[6]: https://coveralls.io/
+[license-badge]: https://img.shields.io/badge/License-MIT-blue.svg
