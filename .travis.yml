@@ -23,4 +23,8 @@ after_success:
   - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
 
 notifications:
-  email: jaeho9929@gmail.com
+  email: 
+    recipients:
+    - jaeho9929@gmail.com
+    on_success: always
+    on_failure: always
