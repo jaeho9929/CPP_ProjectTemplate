@@ -15,7 +15,7 @@ before_install:
 script:
   - sh Scripts/travis_build_default.sh
 after_success:
-  - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
+  - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*" -E ".*google.*"
 
 notifications:
   email: 
