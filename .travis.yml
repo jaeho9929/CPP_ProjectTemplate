@@ -1,25 +1,45 @@
+# TODO docker build env, maybe further.. azure???
 sudo: false
 
 language:
   - cpp
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
+matrix:
+  incldue:
+    - name: Test Ubuntu 16.04 + gcc-7
+    os: linux
+    dist: xenial
+    sudo: false
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        package:
+          - g++-7
+    compiler: gcc
+    env:
+      - BUILD_TYPE=Debug
+    script:
+      - sh Scripts/travis_build_default.sh
+    - name: Test Ubuntu 16.04 + gcc-5
+      os: linux
+      dist: xenial
+      sudo: false
+      addons:
+        apt:
+          sources:
+            -ubuntu-toolchain-r-test
+          package:
+            - g++-5
+      compiler: gcc
+      env:
+        - BUILD_TYPE=Debug
 
 before_install:
   - pip install --user cpp-coveralls
-
-script:
-  - mkdir build
-  - cd build
-  - cmake ..
-  - cmake --build .
-  - ctest
 
 after_success:
   - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
 
 notifications:
-  email: false
+  email: jaeho9929@gmail.com

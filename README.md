@@ -1,7 +1,8 @@
 <!-- TODO badges !!!!!
-[![Coverage Status]]()
+AppVeyor, CodeCov 
 -->
 [![Build Status](https://travis-ci.org/jaeho9929/CPP_ProjectTemplate.svg?branch=master)](https://travis-ci.org/jaeho9929/CPP_ProjectTemplate/builds)
+[![Coverage Status](https://coveralls.io/repos/github/jaeho9929/CPP_ProjectTemplate/badge.svg?branch=master)](https://coveralls.io/github/jaeho9929/CPP_ProjectTemplate?branch=master)
 [![MIT License][license-badge]](LICENSE)
 
 # CMake ProjectTemplate
