@@ -13,12 +13,7 @@ before_install:
   - pip install --user cpp-coveralls
 
 script:
-  - mkdir build
-  - cd build
-  - cmake ..
-  - cmake --build .
-  - ctest
-
+  - sh Scripts/travis_build_default.sh
 after_success:
   - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
 
@@ -26,5 +21,5 @@ notifications:
   email: 
     recipients:
     - jaeho9929@gmail.com
-    on_success: always
-    on_failure: always
+    on_success: change  # default: change
+    on_failure: always  # default: always
