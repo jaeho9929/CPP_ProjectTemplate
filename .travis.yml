@@ -4,67 +4,23 @@ sudo: false
 language:
   - cpp
 
-# NOTE travis-ci matrix example code
-matrix:
-  include:
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++4.9
-      env:
-        - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
-      script:
-        - sh Scripts/travis_build_default.sh
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
 
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            g++5
-      env:
-        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
-      script:
-        - sh Scripts/travis_build_default.sh
-
-   
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            g++6
-      env:
-        - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
-      script:
-        - sh Scripts/travis_build_default.sh
-
-
-     - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            g++7
-      env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-      script:
-        - sh Scripts/travis_build_default.sh
-
-
-       
 before_install:
-  - eval ${MATRIX_EVAL}
   - pip install --user cpp-coveralls
+
+script:
+  - mkdir build
+  - cd build
+  - cmake ..
+  - cmake --build .
+  - ctest
 
 after_success:
   - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
 
 notifications:
-  email: jaeho9929@gmail.com
+  email: false
