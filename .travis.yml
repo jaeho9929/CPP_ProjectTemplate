@@ -4,16 +4,40 @@ sudo: false
 language:
   - cpp
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
+matrix:
+  include:
+  - name: "Ubuntu 16.04 + gcc-7"
+    os: linux
+    dist: xenial
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - gcc-7
+          - g++-7
+    script:
+      - sh Scripts/travis_build_default.sh
+
+  - name: "Ubuntu 16.04 + gcc-6"
+    os: linux
+    dist: xenial
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - gcc-6
+          - g++-6
+    script:
+      - sh Scripts/travis_build_default.sh
 
 before_install:
   - pip install --user cpp-coveralls
 
-script:
-  - sh Scripts/travis_build_default.sh
+#script:
+#  - sh Scripts/travis_build_default.sh
+
 after_success:
   - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*" -E ".*google.*"
 
