@@ -14,7 +14,7 @@ matrix:
       apt:
         sources:
           - ubuntu-toolchain-r-test
-        package:
+        packages:
           - g++-7
     compiler: gcc
     env:
@@ -29,7 +29,7 @@ matrix:
         apt:
           sources:
             -ubuntu-toolchain-r-test
-          package:
+          packages:
             - g++-5
       compiler: gcc
       env:
