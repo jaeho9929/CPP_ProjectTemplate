@@ -4,38 +4,63 @@ sudo: false
 language:
   - cpp
 
+# NOTE travis-ci matrix example code
 matrix:
-  incldue:
-    - name: Test Ubuntu 16.04 + gcc-7
-    os: linux
-    dist: xenial
-    sudo: false
-    addons:
-      apt:
-        sources:
-          - ubuntu-toolchain-r-test
-        packages:
-          - g++-7
-    compiler: gcc
-    env:
-      - BUILD_TYPE=Debug
-    script:
-      - sh Scripts/travis_build_default.sh
-    - name: Test Ubuntu 16.04 + gcc-5
-      os: linux
-      dist: xenial
-      sudo: false
+  include:
+    - os: linux
       addons:
         apt:
           sources:
-            -ubuntu-toolchain-r-test
+            - ubuntu-toolchain-r-test
           packages:
-            - g++-5
-      compiler: gcc
+            - g++4.9
       env:
-        - BUILD_TYPE=Debug
+        - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
+      script:
+        - sh Scripts/travis_build_default.sh
 
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            g++5
+      env:
+        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
+      script:
+        - sh Scripts/travis_build_default.sh
+
+   
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            g++6
+      env:
+        - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
+      script:
+        - sh Scripts/travis_build_default.sh
+
+
+     - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            g++7
+      env:
+        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+      script:
+        - sh Scripts/travis_build_default.sh
+
+
+       
 before_install:
+  - eval ${MATRIX_EVAL}
   - pip install --user cpp-coveralls
 
 after_success:
