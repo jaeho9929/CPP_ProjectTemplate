@@ -21,19 +21,20 @@ matrix:
     script:
       - sh Scripts/travis_build_default.sh
 
-  - name: "Test Ubuntu 16.04(xenial) + gcc-6"
-    os: linux
-    dist: xenial
-    addons:
-      apt:
-        sources:
-          - ubuntu-toolchain-r-test
-        packages:
-          - gcc-6
-          - g++-6
-          - lcov
-    script:
-      - sh Scripts/travis_build_default.sh
+# NOTE temporary commented for faster build
+#  - name: "Test Ubuntu 16.04(xenial) + gcc-6"
+#    os: linux
+#    dist: xenial
+#    addons:
+#      apt:
+#        sources:
+#          - ubuntu-toolchain-r-test
+#        packages:
+#          - gcc-6
+#          - g++-6
+#          - lcov
+#    script:
+#      - sh Scripts/travis_build_default.sh
 
 before_install:
   - pip install --user cpp-coveralls
