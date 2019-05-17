@@ -9,8 +9,6 @@ target_link_libraries(
     mycomplex
 )
 
-message(${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
-
 # NOTE add a test to the project to be run by ctest
 add_test(
     NAME unit

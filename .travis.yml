@@ -6,7 +6,7 @@ language:
 
 matrix:
   include:
-  - name: "Ubuntu 16.04 + gcc-7"
+  - name: "Test Ubuntu 16.04(xenial) + gcc-7"
     os: linux
     dist: xenial
     addons:
@@ -19,7 +19,7 @@ matrix:
     script:
       - sh Scripts/travis_build_default.sh
 
-  - name: "Ubuntu 16.04 + gcc-6"
+  - name: "Test Ubuntu 16.04(xenial) + gcc-6"
     os: linux
     dist: xenial
     addons:
@@ -40,6 +40,10 @@ before_install:
 
 after_success:
   - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*" -E ".*google.*"
+  - lcov --directory . --capture --output-file coverage.info
+  - lcov --remove coverage.info '/usr/*' "${HOME}"'/.cache/*' --output-file coverage.info
+  - lcov --list coverage.info
+  - bash < (curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
 
 notifications:
   email: 
