@@ -1,8 +1,9 @@
 <!-- TODO badges !!!!!
 AppVeyor, CodeCov 
 -->
-[![Build Status](https://travis-ci.org/jaeho9929/CPP_ProjectTemplate.svg?branch=master)](https://travis-ci.org/jaeho9929/CPP_ProjectTemplate/builds)
-[![Coverage Status](https://coveralls.io/repos/github/jaeho9929/CPP_ProjectTemplate/badge.svg?branch=master)](https://coveralls.io/github/jaeho9929/CPP_ProjectTemplate?branch=master)
+[![travis][travis-badge]][travis-link]
+[![coveralls][coveralls-badge]][coveralls-link]
+[![codecov][codecov-badge]][codecov-link]
 [![MIT License][license-badge]](LICENSE)
 
 # CMake ProjectTemplate
@@ -26,4 +27,10 @@ https://www.slideshare.net/utilforever/ss-114169070
 [4]: https://www.appveyor.com/
 [5]: https://codecov.io/
 [6]: https://coveralls.io/
+[travis-badge]: https://travis-ci.org/jaeho9929/CPP_ProjectTemplate.svg?branch=master
+[travis-link]: https://travis-ci.org/jaeho9929/CPP_ProjectTemplate/builds
+[coveralls-badge]: https://coveralls.io/repos/github/jaeho9929/CPP_ProjectTemplate/badge.svg?branch=master
+[coveralls-link]: https://coveralls.io/github/jaeho9929/CPP_ProjectTemplate?branch=master 
+[codecov-badge]: https://codecov.io/gh/jaeho9929/CPP_ProjectTemplate/branch/master/graph/badge.svg
+[codecov-link]: https://codecov.io/gh/jaeho9929/CPP_ProjectTemplate
 [license-badge]: https://img.shields.io/badge/License-MIT-blue.svg
