@@ -16,6 +16,8 @@ matrix:
         packages:
           - gcc-7
           - g++-7
+          - lcov
+
     script:
       - sh Scripts/travis_build_default.sh
 
@@ -29,6 +31,7 @@ matrix:
         packages:
           - gcc-6
           - g++-6
+          - lcov
     script:
       - sh Scripts/travis_build_default.sh
 
@@ -43,7 +46,7 @@ after_success:
   - lcov --directory . --capture --output-file coverage.info
   - lcov --remove coverage.info '/usr/*' "${HOME}"'/.cache/*' --output-file coverage.info
   - lcov --list coverage.info
-  - bash < (curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
+  - bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
 
 notifications:
   email: 
