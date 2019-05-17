@@ -1,16 +1,16 @@
 add_executable(
-    unit_tests
+    UnitTests
     complex_test.cpp
 )
 
 target_link_libraries(
-    unit_tests
+    UnitTests
     gtest_main
     mycomplex
 )
 
 # NOTE add a test to the project to be run by ctest
 add_test(
-    NAME unit
-    COMMAND ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/unit_tests
+    NAME UnitTests
+    COMMAND ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/UnitTests
 )
