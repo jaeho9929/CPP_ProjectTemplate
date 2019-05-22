@@ -3,15 +3,18 @@
 
 #include "ProjectTemplate/MyComplex.hpp"
 
-
-TEST(MyComplexTest, CtorDefaultReal) {
-    MyComplex myComplex;
-    EXPECT_DOUBLE_EQ(0.0, myComplex.getReal());
+TEST(MyComplexTest, CopiedObjectAbsPositiveInput) {
+    MyComplex source(2, 3);
+    MyComplex target = source;
+    double absResult = target.abs();
+    EXPECT_DOUBLE_EQ(sqrt(13.0), absResult);
 }
 
-TEST(MyComplexTest, CtorDefaultImg) {
-    MyComplex myComplex;
-    EXPECT_DOUBLE_EQ(0.0, myComplex.getImg());
+TEST(MyComplexTest, CopiedObjectAbsNegativeInput) {
+    MyComplex source(-2, -3);
+    MyComplex target = source;
+    double absResult = target.abs();
+    EXPECT_DOUBLE_EQ(sqrt(13.0), absResult);
 }
 
 TEST(MyComplexTest, AbsPositiveInput) {

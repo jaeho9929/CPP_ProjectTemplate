@@ -2,6 +2,7 @@
 #define _MYCOMPLEX_HPP_
 
 #include <iostream>
+#include <memory>
 #include <cmath>
 
 /**
@@ -11,18 +12,21 @@
 
 class MyComplex {
     public:
-        MyComplex(double = 0, double = 0);
-        MyComplex(const MyComplex& rhs);
+        MyComplex(double real = 0, double imaginary = 0);
         ~MyComplex();
-        MyComplex &operator=(const MyComplex& rhs);
+        // copy constructor
+        MyComplex(const MyComplex& other);
+        // assignment operator
+        MyComplex &operator=(MyComplex rhs);
 
         double getReal() const;
+        void setReal(double real);
         double getImg() const;
+        void setImg(double imaginary);
         double abs() const;
     private:
-        // TODO pimpl idiom
-        double real;
-        double imaginary;
+        struct Impl;
+        std::unique_ptr<Impl> pimpl;
 };
 
 #endif // _MYCOMPLEX_HPP_

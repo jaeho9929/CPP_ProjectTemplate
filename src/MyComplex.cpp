@@ -1,34 +1,42 @@
 #include "ProjectTemplate/MyComplex.hpp"
 
-MyComplex::MyComplex(double _real, double _imaginary) {
-    this->real = _real;
-    this->imaginary = _imaginary;
-}
+struct MyComplex::Impl {
+    Impl(double _real, double _imaginary)
+        : real(_real), imaginary(_imaginary) { }
+    double real;
+    double imaginary;
+};
 
-MyComplex::MyComplex(const MyComplex& rhs) {
-    this->real = rhs.real;
-    this->imaginary = rhs.imaginary;
-}
+MyComplex::MyComplex(double _real, double _imaginary)
+        : pimpl(new Impl(_real, _imaginary)) { }
 
-MyComplex::~MyComplex() {
-    /* Do something */
-}
+MyComplex::~MyComplex() = default;
 
-MyComplex& MyComplex::operator=(const MyComplex& rhs) {
-    this->real = rhs.real;
-    this->imaginary = rhs.imaginary;
+MyComplex::MyComplex(const MyComplex& other) 
+        : pimpl(new Impl(*other.pimpl)) { }
 
+
+MyComplex& MyComplex::operator=(MyComplex rhs) {
+    std::swap(pimpl, rhs.pimpl);
     return *this;
 }
 
 double MyComplex::getReal() const {
-    return this->real;
+    return pimpl->real;
+}
+
+void MyComplex::setReal(double _real) {
+    pimpl->real = _real;
 }
 
 double MyComplex::getImg() const {
-    return this->imaginary;
+    return pimpl->imaginary;
+}
+
+void MyComplex::setImg(double _imaginary) {
+    pimpl->imaginary = _imaginary;
 }
 
 double MyComplex::abs() const {
-    return sqrt(this->real * this->real + this->imaginary * this->imaginary);
+    return sqrt(pimpl->real * pimpl->real + pimpl->imaginary * pimpl->imaginary);
 }
