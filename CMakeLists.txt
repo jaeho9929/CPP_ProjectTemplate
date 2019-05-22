@@ -1,16 +1,25 @@
 cmake_minimum_required(VERSION 3.5.0)
-project(ProjectTemplate CXX)
-set(CMAKE_CXX_STANDARD 17)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+project(ProjectTemplate)
 
 # TODO build type output directory tree
 
-message(STATUS ${CMAKE_SYSTEM_NAME})
+# Set output directories
 if(UNIX AND NOT APPLE)
     include(GNUInstallDirs)
     set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
     set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 endif()
+
+# Set enable output of compile commands during generation
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Includes
+include_directories(include)
+
+# Compile options
+include(CompileOptions)
 
 # SECTION main dependency 
 if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
@@ -19,26 +28,20 @@ if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
     set(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
 endif()
 
-include_directories(include)
-add_subdirectory(src)
-set(mainTarget templateMain)
-add_executable(${mainTarget}
-    src/main.cpp
-)
 
-target_link_libraries(
-    ${mainTarget}
-    mycomplex
-)
+# Enable testing
+enable_testing()
+
+# Project modules
+add_subdirectory(src)
+add_subdirectory(test)
 
 # SECTION testing configurations
-include(cmake/googletest.cmake)
+include(googletest)
 fetch_googletest(
     ${PROJECT_SOURCE_DIR}/cmake
     ${PROJECT_BINARY_DIR}/googletest
 )
-enable_testing()
-add_subdirectory(test)
 
 # SECTION packaging configurations
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})

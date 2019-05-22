@@ -1,7 +1,7 @@
 #include <iostream>
 #include "gtest/gtest.h"
 
-#include "mycomplex.hpp"
+#include "ProjectTemplate/MyComplex.hpp"
 
 
 TEST(MyComplexTest, CtorDefaultReal) {

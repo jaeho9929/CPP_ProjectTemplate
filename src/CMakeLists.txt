@@ -1,15 +1,58 @@
-add_library(mycomplex "")
+# Target name
+set(target mycomplex)
 
-target_sources(
-    mycomplex
-    PRIVATE
-        mycomplex.cpp
-    PUBLIC
-        ${PROJECT_SOURCE_DIR}/include/mycomplex.hpp
+# Define
+set(root_dir ${CMAKE_CURRENT_SOURCE_DIR}/../)
+
+# Includes
+include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/../include
 )
 
-target_include_directories(
-    mycomplex
+file(GLOB header_dir
+    ${CMAKE_CURRENT_SOURCE_DIR}/../include
+)
+
+file(GLOB_RECURSE headers
+    ${header_dir}/*.hpp
+)
+
+# TODO Find the console source(main.cpp) location in CPP build structue.
+file(GLOB_RECURSE sources
+    # ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/MyComplex.cpp
+)
+
+add_library(${target}
+    ${sources}
+)
+
+# Project options
+set_target_properties(${target}
+    PROPERTIES
+    ${DEFAULT_COMPILE_OPTIONS}
+)
+
+# Compile options
+target_compile_options(${target}
+    PRIVATE
+
     PUBLIC
-        ${PROJECT_SOURCE_DIR}/include
+    ${DEFAULT_COMPILE_OPTIONS}
+
+    INTERFACE
+)
+
+target_compile_definitions(${target}
+    PRIVATE
+    MYDEF="<some definition>"
+)
+
+target_link_libraries(${target}
+    PRIVATE
+
+    PUBLIC
+    ${DEFAULT_LINKER_OPTIONS}
+
+    INTERFACE
 )

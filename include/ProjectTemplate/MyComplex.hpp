@@ -5,9 +5,10 @@
 #include <cmath>
 
 /**
- * @brief Class that represent complex number
+ * @brief Public Class that represent complex number
  * 
  */
+
 class MyComplex {
     public:
         MyComplex(double = 0, double = 0);
@@ -19,6 +20,7 @@ class MyComplex {
         double getImg() const;
         double abs() const;
     private:
+        // TODO pimpl idiom
         double real;
         double imaginary;
 };

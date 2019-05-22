@@ -1,5 +1,5 @@
 #include <iostream>
-#include "mycomplex.hpp"
+#include "MyComplex.hpp"
 
 int main(int argc, char const *argv[])
 {
