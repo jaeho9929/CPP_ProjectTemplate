@@ -1,4 +1,4 @@
-# Set target name
+# Target name
 set(target UnitTests)
 
 # Includes
@@ -21,14 +21,23 @@ set_target_properties(${target}
 
 target_compile_options(${target}
     PRIVATE
+    PUBLIC
     ${DEFAULT_COMPILE_OPTIONS}
+    INTERFACE
+)
+
+target_compile_definitions(${target}
+    PRIVATE
+    MYDEF="someDefinitions"
 )
 
 target_link_libraries(${target}
     PRIVATE
+    PUBLIC
     ${DEFAULT_LINKER_OPTIONS}
     gtest_main
     mycomplex
+    INTERFACE
 )
 
 # NOTE add a test to the project to be run by ctest

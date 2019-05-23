@@ -1,12 +1,11 @@
 set(DEFAULT_PROJECT_OPTIONS
-    CXX_STANDARD                    17
+    CXX_STANDARD                    11
     LINKER_LANGUAGE                 "CXX"
     # This property is True by default for SHARED and MODULE library targets and False otherwise
     POSITION_INDEPENDENT_CODE       ON
 )
 
 set(DEFAULT_COMPILE_OPTIONS
-    ${DEFAULT_COMPILE_OPTIONS}
     # -Wall
     # Code coverage options
     -g
@@ -16,6 +15,6 @@ set(DEFAULT_COMPILE_OPTIONS
 )
 
 set(DEFAULT_LINKER_OPTIONS
-    -fprofile-arcs
-    -ftest-coverage
+    -lgcov
+    -pthread
 )
