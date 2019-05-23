@@ -17,6 +17,8 @@ matrix:
           - gcc-7
           - g++-7
           - lcov
+    env:
+      - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
 
     script:
       - sh Scripts/travis_build_default.sh
@@ -38,6 +40,7 @@ matrix:
 
 before_install:
   - pip install --user cpp-coveralls
+  - eval "${MATRIX_EVAL}"
 
 #script:
 #  - sh Scripts/travis_build_default.sh

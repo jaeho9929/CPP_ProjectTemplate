@@ -17,12 +17,14 @@ file(GLOB_RECURSE headers
     ${header_dir}/*.hpp
 )
 
+# Sources
 # TODO Find the console source(main.cpp) location in CPP build structue.
 file(GLOB_RECURSE sources
     # ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/MyComplex.cpp
 )
 
+# Build library
 add_library(${target}
     ${sources}
 )
@@ -30,29 +32,25 @@ add_library(${target}
 # Project options
 set_target_properties(${target}
     PROPERTIES
-    ${DEFAULT_COMPILE_OPTIONS}
+    ${DEFAULT_PROJECT_OPTIONS}
 )
 
 # Compile options
 target_compile_options(${target}
     PRIVATE
-
     PUBLIC
     ${DEFAULT_COMPILE_OPTIONS}
-
     INTERFACE
 )
 
 target_compile_definitions(${target}
     PRIVATE
-    MYDEF="<some definition>"
+    MYDEF="someDefinitions"
 )
 
 target_link_libraries(${target}
     PRIVATE
-
     PUBLIC
     ${DEFAULT_LINKER_OPTIONS}
-
     INTERFACE
 )
