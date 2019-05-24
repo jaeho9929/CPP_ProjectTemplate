@@ -29,6 +29,19 @@ add_library(${target}
     ${sources}
 )
 
+# Build Executable
+add_executable(
+    MyMain
+    ${CMAKE_CURRENT_SOURCE_DIR}/MyMain.cpp
+)
+
+target_link_libraries( MyMain
+    PRIVATE
+    ${target}
+    PUBLIC
+    INTERFACE
+)
+
 # Project options
 set_target_properties(${target}
     PROPERTIES
