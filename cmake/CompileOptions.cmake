@@ -5,6 +5,7 @@ set(DEFAULT_PROJECT_OPTIONS
     POSITION_INDEPENDENT_CODE       ON
 )
 
+# TODO divide compile options in each build type
 set(DEFAULT_COMPILE_OPTIONS
     # -Wall
     # Code coverage options
@@ -14,7 +15,7 @@ set(DEFAULT_COMPILE_OPTIONS
     -ftest-coverage
 )
 
+# TODO divide linker options in each build type
 set(DEFAULT_LINKER_OPTIONS
-    -lgcov
-    -pthread
+    -fprofile-arcs  # implies -lgcov
 )

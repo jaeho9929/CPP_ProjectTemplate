@@ -1,2 +1,27 @@
-ignore:
-  - 'test'
+codecov:
+  notify:
+    require_ci_to_pass : yes
+
+coverage:
+  precision: 2
+  round: down
+  range: 50...80
+
+  status:
+    project:
+      default: false
+      tests:
+        target: 100%
+        paths: "test/"
+      app:
+        paths: "!test/"
+
+  ignore:
+    - 'build'
+    - 'cmake'
+    - 'libs'
+    - 'Scripts'
+
+comment:
+  layout: "header, diff, changes, uncovered"
+  behavior: default
