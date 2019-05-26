@@ -1,4 +1,5 @@
 {
+    "editor.formatOnSave": true,
     "catch2TestExplorer.executables": {
         "name": "${filename}",
         "description": "${relDirpath}/",

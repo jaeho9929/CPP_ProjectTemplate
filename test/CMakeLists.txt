@@ -34,9 +34,15 @@ target_compile_definitions(${target}
 target_link_libraries(${target}
     PRIVATE
     PUBLIC
-    ${DEFAULT_LINKER_OPTIONS}
     gtest_main
     mycomplex
+    INTERFACE
+)
+
+target_link_options(${target}
+    PRIVATE
+    PUBLIC
+    ${DEFAULT_LINKER_OPTIONS}
     INTERFACE
 )
 

@@ -64,6 +64,12 @@ target_compile_definitions(${target}
 target_link_libraries(${target}
     PRIVATE
     PUBLIC
+    INTERFACE
+)
+
+target_link_options(${target}
+    PRIVATE
+    PUBLIC
     ${DEFAULT_LINKER_OPTIONS}
     INTERFACE
 )

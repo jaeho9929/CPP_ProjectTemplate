@@ -8,7 +8,7 @@ int main(int argc, char const *argv[])
 
     std::cout << "Complex Real : " << myComplex.getReal() << std::endl;
     std::cout << "Complex Img : " << myComplex.getImg() << std::endl;
-    std::cout << "Complex Abs : "<< myComplex.abs() << std::endl;
+    std::cout << "Complex Abs : " << myComplex.abs() << std::endl;
 
     return 0;
 }

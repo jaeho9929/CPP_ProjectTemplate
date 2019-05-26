@@ -11,11 +11,13 @@ set(DEFAULT_COMPILE_OPTIONS
     # Code coverage options
     -g
     -O0
-    -fprofile-arcs
-    -ftest-coverage
+    # -fprofile-arcs
+    # -ftest-coverage
+    --coverage
 )
 
 # TODO divide linker options in each build type
 set(DEFAULT_LINKER_OPTIONS
-    -fprofile-arcs  # implies -lgcov
+    # -fprofile-arcs  # implies -lgcov
+    --coverage
 )
