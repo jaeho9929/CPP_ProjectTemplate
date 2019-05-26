@@ -34,17 +34,19 @@ target_compile_definitions(${target}
 target_link_libraries(${target}
     PRIVATE
     PUBLIC
+    ${DEFAULT_LINKER_OPTIONS}
     gtest_main
     mycomplex
     INTERFACE
 )
 
-target_link_options(${target}
-    PRIVATE
-    PUBLIC
-    ${DEFAULT_LINKER_OPTIONS}
-    INTERFACE
-)
+# FIXME temporary disabled for travis build compatibility
+# target_link_options(${target}
+#     PRIVATE
+#     PUBLIC
+#     ${DEFAULT_LINKER_OPTIONS}
+#     INTERFACE
+# )
 
 # NOTE add a test to the project to be run by ctest
 add_test(
