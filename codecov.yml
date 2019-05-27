@@ -8,6 +8,7 @@ coverage:
   range: 50...80
 
   status:
+    patch: off
     project:
       default: false
       tests:
