@@ -46,7 +46,9 @@ before_install:
 #  - sh Scripts/travis_build_default.sh
 
 after_success:
-  - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*" -E ".*google.*"
+  # -E ; --exclude-pattern, set exclude file/directory pattern
+  - coveralls --exclude cmake --exclude libs --exclude Scripts --exclude test
+#  - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*" -E ".*google.*"
 #  - lcov --directory . --capture --output-file coverage.info
 #  - lcov --remove coverage.info '/usr/*' "${HOME}"'/.cache/*' --output-file coverage.info
 #  - lcov --list coverage.info

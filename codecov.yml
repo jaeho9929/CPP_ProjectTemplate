@@ -8,20 +8,16 @@ coverage:
   range: 50...80
 
   status:
-    patch: off
-    project:
-      default: false
-      tests:
-        target: 100%
-        paths: "test/"
-      app:
-        paths: "!test/"
+    project: true
+    patch: true
+    changes: true
 
   ignore:
     - 'build'
     - 'cmake'
     - 'libs'
     - 'Scripts'
+    - 'test'
 
 comment:
   layout: "header, diff, changes, uncovered"

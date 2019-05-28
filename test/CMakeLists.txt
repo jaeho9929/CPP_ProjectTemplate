@@ -40,7 +40,7 @@ target_link_libraries(${target}
     INTERFACE
 )
 
-# FIXME temporary disabled for travis build compatibility
+# FIXME temporary disabled for travis build compatibility, work only cmake 3.13 or higher
 # target_link_options(${target}
 #     PRIVATE
 #     PUBLIC
